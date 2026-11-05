@@ -12,3 +12,29 @@ bcftools view -H $F | wc -l   # this resulted in 199,843 records
 
 bcftools view -h $F | grep -E '^##reference|^##contig=<ID=chrY'    ## this confirmed hg38 and Y chromosome data
 
+bcftools view -S Only_male_Final $F -Oz -o Only_male_all.vcf.gz  ## male sample data information were extracted from the Poznik et al., 2016
+bcftools index Only_male_all.vcf.gz
+bcftools query -l Only_male_all.vcf.gz | wc -l      
+
+
+bcftools view -S Only_male_Final $F -Oz -o Only_male_all.vcf.gz ## mask file were downloaded from the https://ftp-trace.ncbi.nih.gov/1000genomes, where we used only strict mask file
+bcftools index Only_male_all.vcf.gz
+bcftools query -l Only_male_all.vcf.gz | wc -l    ## this help us to estimate the callable region, as we need for scalling mutation for BSP. 
+
+bcftools view -R strict_merged.bed -f PASS -v snps -m2 -M2 Only_male_all.vcf.gz | bcftools view -H | wc -l   # number of SNPs was 58,277
+
+bcftools view -R strict_merged.bed -f PASS -v snps -m2 -M2 Only_male_all.vcf.gz -Ou \
+ | bcftools +setGT -Ou -- -t q -n . -i 'FMT/DP<3 | FMT/GQ<20' \
+ | bcftools +fill-tags -Ou -- -t AC,AN,F_MISSING \
+ | bcftools view -i 'F_MISSING<0.1 && AC>0 && AC<AN' -Oz -o Y_30x_strict_biSNP_males.vcf.gz
+
+bcftools index Y_30x_strict_biSNP_males.vcf.gz
+bcftools view -H Y_30x_strict_biSNP_males.vcf.gz | wc -l      # 56,066
+
+
+python3 vcf2fasta.py Y_30x_strict_biSNP_males.vcf.gz Y_30x_strict_males.fasta
+# samples: 1234  variable sites: 56066
+# ref base at variable sites: G 16151, C 16223, T 11821, A 11871
+
+
+
