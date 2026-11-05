@@ -1,4 +1,5 @@
 ## vcf of contaning the Y chromosome only were downloaded 
+## NOTE: this may not contain all step, as i did earlier, and trying to gather steps, but some might be missing!!
 
 BASE=https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/1000G_2504_high_coverage/working/20201028_3202_raw_GT_with_annot
 F=20201028_CCDG_14151_B01_GRM_WGS_2020-08-05_chrY.recalibrated_variants.vcf.gz
