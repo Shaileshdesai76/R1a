@@ -1,7 +1,7 @@
 ## To run the Script, keep the file in _table, files 
 
 
-setwd("C:/Users/shail/OneDrive/Documents/Analysis/RScript/")
+setwd(".") # or C:/Users/shail/OneDrive/Documents/Analysis/RScript/
 library(readr)  # if not installed, install first
 library(readxl)
 library(ggplot2)
