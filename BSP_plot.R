@@ -49,7 +49,7 @@ MAX<- MAX / 1000
 
 MAX<- 15  ######## IMPORTANT:::: comment it, if you want the BSP base on your maximum values in data
 paste0("Maximum timeline is: ", MAX)
-print("Please change code, if you want to custimize it")
+print("Please change code, if you want to plot for it, otherwise it plot with cutoff of 15kya")
 
 ## Now lets turn into ggplot suitable data
 all_bsp <- do.call(rbind, lapply(sets, function(s) {
