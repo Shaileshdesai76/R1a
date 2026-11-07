@@ -46,6 +46,8 @@ for (i in seq_along(X)) {
 }
 
 MAX<- MAX / 1000
+
+MAX<- 15  ######## IMPORTANT:::: comment it, if you want the BSP base on your maximum values in data
 paste0("Maximum timeline is: ", MAX)
 print("Please change code, if you want to custimize it")
 
