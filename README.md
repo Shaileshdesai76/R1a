@@ -12,3 +12,5 @@ The maximum plotting time is found automatically from the data; for a shorter wi
 # ==============================================================================
 
 Another Text files available which indicates the steps, for retriving and gathering 1000 genome database for Y chromosome. 
+
+R1a manuscript is under review currently !!!
